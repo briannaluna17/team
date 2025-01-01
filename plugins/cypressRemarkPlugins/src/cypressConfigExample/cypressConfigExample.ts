@@ -28,7 +28,7 @@ export function cypressConfigExample(this: any) {
 }
 
 function transformNode(codeNode: Code, importNode?: Code): Code[] {
-  const tsCode = hydrateConfigSample(codeNode.value, importNode?.value)
+  var tsCode = hydrateConfigSample(codeNode.value, importNode?.value)
 
   return [
     {
