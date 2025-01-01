@@ -1,7 +1,7 @@
 // Original: Material Oceanic (by https://github.com/dutchenkoOleg)
 // https://github.com/PrismJS/prism-themes/blob/master/themes/prism-material-oceanic.css
 
-var theme = {
+const theme = {
   plain: {
     color: "#c3cee3",
     backgroundColor: "#282A36"
