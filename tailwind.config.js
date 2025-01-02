@@ -1,5 +1,5 @@
 // tailwind.config.cjs
-let cypressCSS = require('@cypress-design/css')
+const cypressCSS = require('@cypress-design/css')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
