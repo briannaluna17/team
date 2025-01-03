@@ -1,27 +1,27 @@
 import { expect, it } from 'vitest'
 import { transformEsmToCjs } from './transformEsmToCjs'
 
-it(`should replace "import foo from 'bar'" with "let foo = require('bar')"`, () => {
-  let code = `import foo from 'bar'`
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let foo = require('bar')`)
+it(`should replace "import foo from 'bar'" with "const foo = require('bar')"`, () => {
+  const code = `import foo from 'bar'`
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const foo = require('bar')`)
 })
 
-it(`should replace "import { foo } from 'bar'" with "let { foo } = require('bar')"`, () => {
-  let code = `import { foo } from 'bar'`
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let { foo } = require('bar')`)
+it(`should replace "import { foo } from 'bar'" with "const { foo } = require('bar')"`, () => {
+  const code = `import { foo } from 'bar'`
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const { foo } = require('bar')`)
 })
 
-it(`should replace "import { a, b, c } from 'bar'" with "let { a, b, c } = require('bar')"`, () => {
-  let code = `import { a, b, c } from 'bar'`
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let { a, b, c } = require('bar')`)
+it(`should replace "import { a, b, c } from 'bar'" with "const { a, b, c } = require('bar')"`, () => {
+  const code = `import { a, b, c } from 'bar'`
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const { a, b, c } = require('bar')`)
 })
 
 it(`should replace "import 'bar'" with "require('bar')"`, () => {
-  let code = `import 'bar'`
-  let result = transformEsmToCjs(code)
+  const code = `import 'bar'`
+  const result = transformEsmToCjs(code)
   expect(result).toEqual(`require('bar')`)
 })
 
@@ -29,18 +29,18 @@ it(`should replace "import {
   a,
   b,
   c
-} from 'bar'" with "let {
+} from 'bar'" with "const {
   a,
   b,
   c
 } = require('bar')"`, () => {
-  let code = `import {
+  const code = `import {
   a,
   b,
   c
 } from 'bar'`
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let {
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const {
   a,
   b,
   c
@@ -48,19 +48,19 @@ it(`should replace "import {
 })
 
 it(`should replace "export default defineConfig({})" with "module.exports = defineConfig({})"`, () => {
-  let code = `export default defineConfig({})`
-  let result = transformEsmToCjs(code)
+  const code = `export default defineConfig({})`
+  const result = transformEsmToCjs(code)
   expect(result).toEqual(`module.exports = defineConfig({})`)
 })
 
-it(`should replace "export let name = 'joe'" with "module.exports.name = 'joe'"`, () => {
-  let code = `export let name = 'joe'`
-  let result = transformEsmToCjs(code)
+it(`should replace "export const name = 'joe'" with "module.exports.name = 'joe'"`, () => {
+  const code = `export const name = 'joe'`
+  const result = transformEsmToCjs(code)
   expect(result).toEqual(`module.exports.name = 'joe'`)
 })
 
 it(`should work on longer example`, () => {
-  let code = `import { defineConfig } from 'cypress';
+  const code = `import { defineConfig } from 'cypress';
 import '@cypress/instrument-cra';
 export default defineConfig({
   component: {
@@ -75,8 +75,8 @@ export default defineConfig({
   },
 });`
 
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let { defineConfig } = require('cypress')
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const { defineConfig } = require('cypress')
 require('@cypress/instrument-cra')
 module.exports = defineConfig({
   component: {
@@ -93,14 +93,14 @@ module.exports = defineConfig({
 })
 
 it('should maintain newlines', () => {
-  let code = `import { defineConfig } from 'cypress';
+  const code = `import { defineConfig } from 'cypress';
 
 export default defineConfig({
 
 });
-export let name = 'joe';`
-  let result = transformEsmToCjs(code)
-  expect(result).toEqual(`let { defineConfig } = require('cypress')
+export const name = 'joe';`
+  const result = transformEsmToCjs(code)
+  expect(result).toEqual(`const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
 
