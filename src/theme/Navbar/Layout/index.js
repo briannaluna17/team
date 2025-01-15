@@ -18,11 +18,11 @@ function NavbarBackdrop(props) {
   );
 }
 export default function NavbarLayout({children}) {
-  const {
+  let {
     navbar: {hideOnScroll, style},
   } = useThemeConfig();
-  const mobileSidebar = useNavbarMobileSidebar();
-  const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
+  let mobileSidebar = useNavbarMobileSidebar();
+  let {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
   return (
     <nav
       ref={navbarRef}
