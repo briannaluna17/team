@@ -5,7 +5,7 @@ import { hydratePluginSample } from './hydratePluginSample'
 import { isCode, isMatchedDirective } from '../utils/matchHelpers'
 
 export function cypressConfigPluginExample(this: any) {
-  const tagName = 'cypress-config-plugin-example'
+  var tagName = 'cypress-config-plugin-example'
   return (root: Root) => {
     //@ts-ignore
     visit(root, (node: Node) => {
@@ -30,7 +30,7 @@ export function cypressConfigPluginExample(this: any) {
 }
 
 function transformNode(codeNode: Code, importNode?: Code): Code[] {
-  const tsCode = hydratePluginSample(codeNode.value, importNode?.value)
+  var tsCode = hydratePluginSample(codeNode.value, importNode?.value)
 
   return [
     {
