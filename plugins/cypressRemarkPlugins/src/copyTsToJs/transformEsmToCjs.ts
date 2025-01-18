@@ -3,20 +3,20 @@
  * cjs requires/module.exports. Might not work for all situations but hopefully
  * enough for our docs.
  */
-export var transformEsmToCjs = (code: string) => {
+export const transformEsmToCjs = (code: string) => {
   let result = convertImports(code)
   result = convertExports(result)
   return result
 }
 
-var convertImports = (code: string) => {
-  var importRegEx =
+const convertImports = (code: string) => {
+  const importRegEx =
     /import(?:["'\s]*([\w*${}\n\r\t, ]+)from\s*)?["'\s]["'\s](.*[@\w_-]+)["'\s].*$/gm
   let matches = code.matchAll(importRegEx)
-  for (var match of matches) {
+  for (const match of matches) {
     let newLine = ''
     if (match[1]) {
-      newLine = `var ${match[1].trim()} = require('${match[2].trim()}')`
+      newLine = `const ${match[1].trim()} = require('${match[2].trim()}')`
     } else {
       newLine = `require('${match[2].trim()}')`
     }
@@ -26,9 +26,9 @@ var convertImports = (code: string) => {
 }
 
 function convertExports(code: string) {
-  var exportDefaultRegex = /^export default /gm
+  const exportDefaultRegex = /^export default /gm
   let result = code.replace(exportDefaultRegex, 'module.exports = ')
-  var exportRegex = /^export var /gm
+  const exportRegex = /^export const /gm
   result = result.replace(exportRegex, 'module.exports.')
   return result
 }
