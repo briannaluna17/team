@@ -1,4 +1,4 @@
-const URLs: Array<string> = Cypress.env('URLs')
+let URLs: Array<string> = Cypress.env('URLs')
 
 // Mostly this is to get a UI Coverage and Accessibility report
 describe('Visit all pages', () => {
