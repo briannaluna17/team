@@ -19,9 +19,9 @@ export function copyTsToJs(
       if (isParent(node)) {
         let index = 0
         while (index < node.children.length) {
-          var child = node.children[index]!
+          const child = node.children[index]!
           if (matchNode(child)) {
-            var result = transformNode(child, {
+            const result = transformNode(child, {
               prettierOptions,
               typescriptCompilerOptions,
             })
@@ -49,7 +49,7 @@ function matchNode(node: Node): node is Code & Parent {
 }
 
 function transformNode(node: Code, options: PluginOptions) : Code[]{
-  var { tsCode, jsCode } = transformTsToJs(node.value, options)
+  const { tsCode, jsCode } = transformTsToJs(node.value, options)
 
   return [
     {
