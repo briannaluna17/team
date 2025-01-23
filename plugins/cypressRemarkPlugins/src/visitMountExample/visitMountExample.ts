@@ -5,7 +5,7 @@ import { isCode, isMatchedDirective } from '../utils/matchHelpers'
 import { hydrateVisitMountExample } from './hydrateVisitMountExample'
 
 export function visitMountExample(this: any) {
-  const tagName = 'visit-mount-example'
+  var tagName = 'visit-mount-example'
   return (root) => {
     visit(root, (node: Node) => {
       if (isMatchedDirective(node, tagName)) {
@@ -26,7 +26,7 @@ export function visitMountExample(this: any) {
 }
 
 function transformNode(codeNode: Code): Code[] {
-  const { visitCode, mountCode } = hydrateVisitMountExample(codeNode.value)
+  var { visitCode, mountCode } = hydrateVisitMountExample(codeNode.value)
 
   return [
     {
