@@ -8,7 +8,7 @@ export function cypressConfigExample(this: any) {
   return (root) => {
     visit(root, (node: Node) => {
       if (isMatchedDirective(node, 'cypress-config-example')) {
-        const result: Node[] = []
+        let result: Node[] = []
         if (node.children.length === 1 && isCode(node.children[0])) {
           result = transformNode(node.children[0])
         } else if (isCode(node.children[0]) && isCode(node.children[1])) {
