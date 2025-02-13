@@ -4,11 +4,11 @@
  * verify plugins are there before 'npm run start' is called.
  */
 
-let fs = require('fs')
-let path = require('path')
-let { exec } = require('child_process')
+const fs = require('fs')
+const path = require('path')
+const { exec } = require('child_process')
 
-let pluginDir = './plugins/CypressRemarkPlugins/dist'
+const pluginDir = './plugins/CypressRemarkPlugins/dist'
 
 if (!fs.existsSync(path.join(process.cwd(), pluginDir))) {
   exec('npm run build:plugins', (err, stdout) => {
