@@ -1,20 +1,20 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const darkCodeTheme = require('./src/theme/prism-material-oceanic')
-const { default: remarkDirective } = require('remark-directive')
+let darkCodeTheme = require('./src/theme/prism-material-oceanic')
+let { default: remarkDirective } = require('remark-directive')
 
-const fs = require('fs')
-const {
+let fs = require('fs')
+let {
   copyTsToJs,
   cypressConfigPluginExample,
   cypressConfigExample,
   visitMountExample,
 } = require('./plugins/cypressRemarkPlugins/dist')
-const prettierConfig = JSON.parse(fs.readFileSync('./.prettierrc', 'utf-8'))
+let prettierConfig = JSON.parse(fs.readFileSync('./.prettierrc', 'utf-8'))
 
 /** @type {import('@docusaurus/types').Config} */
-const config = {
+let config = {
   title: 'Cypress Documentation',
   tagline:
     'Fast, easy and reliable testing for anything that runs in a browser.',
