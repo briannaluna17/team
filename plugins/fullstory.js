@@ -1,6 +1,6 @@
 
 module.exports = async function fullStory({ context, options }) {
-  const isProd = process.env.NODE_ENV === 'production'
+  let isProd = process.env.NODE_ENV === 'production'
   return {
     name: 'docusaurus-plugin-fullstory',
     injectHtmlTags({ content }) {
