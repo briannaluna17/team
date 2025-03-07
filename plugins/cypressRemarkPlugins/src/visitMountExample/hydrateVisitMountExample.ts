@@ -1,6 +1,6 @@
 export function hydrateVisitMountExample(code: string) {
-  let regex = /-{(.*)}-/gs
-  let matches = [...(code.matchAll(regex) || [])][0] || []
+  const regex = /-{(.*)}-/gs
+  const matches = [...(code.matchAll(regex) || [])][0] || []
 
   if (matches.length != 2) {
     throw Error(
@@ -8,17 +8,17 @@ export function hydrateVisitMountExample(code: string) {
     )
   }
 
-  let fullMatch = matches[0]
-  let token = matches[1]
+  const fullMatch = matches[0]
+  const token = matches[1]
 
-  let [visit, mount] = token.split('::')
+  const [visit, mount] = token.split('::')
 
   if (!visit || !mount) {
     throw Error('Token format invalid in visit-mount-example: ' + token)
   }
 
-  let visitCode = code.replace(fullMatch, visit)
-  let mountCode = code.replace(fullMatch, mount)
+  const visitCode = code.replace(fullMatch, visit)
+  const mountCode = code.replace(fullMatch, mount)
 
   return {
     visitCode,
