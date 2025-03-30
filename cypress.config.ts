@@ -12,7 +12,7 @@ export default defineConfig({
     supportFile: false,
     baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
-      let path = 'docs';
+      const path = 'docs';
 
       function walk(dir: string): string[] {
         return readdirSync(dir, { withFileTypes: true }).flatMap((file) => {
@@ -42,7 +42,7 @@ export default defineConfig({
         })
       }
 
-      let URLs = walk(path).filter((file) => file !== undefined).map((file) => file.slice(5))
+      const URLs = walk(path).filter((file) => file !== undefined).map((file) => file.slice(5))
 
       config.env.URLs = URLs
 
