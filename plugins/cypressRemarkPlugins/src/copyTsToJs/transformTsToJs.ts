@@ -5,18 +5,18 @@ import { PluginOptions } from './pluginOptions'
 import { transformEsmToCjs } from './transformEsmToCjs'
 
 export function transformTsToJs(code: string, options: PluginOptions) {
-  let tsCode = escapeNewLines(code)
-  let esmCode = tsToEsm(tsCode, options).outputText
+  const tsCode = escapeNewLines(code)
+  const esmCode = tsToEsm(tsCode, options).outputText
 
-  let prettyTsCode = prettier
+  const prettyTsCode = prettier
     .format(
       restoreNewLines(tsCode),
       makePrettierOptions(options.prettierOptions),
     )
     .slice(0, -1)
 
-  let cjsCode = transformEsmToCjs(esmCode)
-  let prettyCjsCode = prettier
+  const cjsCode = transformEsmToCjs(esmCode)
+  const prettyCjsCode = prettier
     .format(
       restoreNewLines(cjsCode),
       makePrettierOptions(options.prettierOptions),
