@@ -8,11 +8,11 @@ import { useColorMode } from '@docusaurus/theme-common'
 
 export default function DarkModeSwitch() {
    
-  let { colorMode, setColorMode } = useColorMode(null)
+  const { colorMode, setColorMode } = useColorMode(null)
    useEffect(() => {
     setColorMode(localStorage.getItem('theme'))
   }, [])
-  let isDark = colorMode === 'dark'
+  const isDark = colorMode === 'dark'
   return (
     <button
       className={clsx(
