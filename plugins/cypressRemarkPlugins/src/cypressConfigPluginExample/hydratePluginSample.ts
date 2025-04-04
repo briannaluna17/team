@@ -1,4 +1,4 @@
-let pluginTemplate = `
+const pluginTemplate = `
 import { defineConfig } from 'cypress'
 /** replace import **/
 
