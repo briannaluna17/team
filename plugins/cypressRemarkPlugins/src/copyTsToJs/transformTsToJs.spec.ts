@@ -2,28 +2,28 @@ import { expect, it } from 'vitest'
 import { transformTsToJs } from './transformTsToJs'
 
 it(`should strip out any typings`, async () => {
-  const code = `const age: number = 23
-  const name: string = 'joe';
+  let code = `let age: number = 23
+  let name: string = 'joe';
   function foo(bar: string) {}
   `
 
-  const { jsCode } = await transformTsToJs(code, {})
+  let { jsCode } = await transformTsToJs(code, {})
 
-  expect(jsCode).toEqual(`const age = 23
-const name = 'joe'
+  expect(jsCode).toEqual(`let age = 23
+let name = 'joe'
 function foo(bar) {}`)
 })
 
 it('should maintain newlines', async () => {
-  const code = `import { defineConfig } from 'cypress'
+  let code = `import { defineConfig } from 'cypress'
 
 export default defineConfig({})
 
-export const name = 'joe'`
+export let name = 'joe'`
 
-  const { jsCode } = await transformTsToJs(code, {})
+  let { jsCode } = await transformTsToJs(code, {})
 
-  expect(jsCode).toEqual(`const { defineConfig } = require('cypress')
+  expect(jsCode).toEqual(`let { defineConfig } = require('cypress')
 
 module.exports = defineConfig({})
 
@@ -31,12 +31,12 @@ module.exports.name = 'joe'`)
 })
 
 it('should convert imports/exports to require/modules', async () => {
-  const code = `import { defineConfig } from 'cypress'
+  let code = `import { defineConfig } from 'cypress'
 export default defineConfig({})
-export const name = 'joe'`
-  const { jsCode } = await transformTsToJs(code, {})
+export let name = 'joe'`
+  let { jsCode } = await transformTsToJs(code, {})
 
-  expect(jsCode).toEqual(`const { defineConfig } = require('cypress')
+  expect(jsCode).toEqual(`let { defineConfig } = require('cypress')
 module.exports = defineConfig({})
 module.exports.name = 'joe'`)
 })
