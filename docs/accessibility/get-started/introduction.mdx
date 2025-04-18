@@ -1,0 +1,191 @@
+---
+sidebar_label: Introduction
+title: 'Accessibility Testing | Cypress Documentation'
+description: 'Cypress Accessibility provides organized, visual, and actionable accessibility reports, based completely on the tests you record to Cypress Cloud, and powered by Axe Core® by Deque Systems.'
+sidebar_position: 10
+sidebar_custom_props: { 'new_label': true }
+---
+
+<ProductHeading product="accessibility" />
+
+# Automated accessibility checks on every test
+
+Cypress Accessibility adds detailed accessibility checks and workflows in Cypress Cloud, with zero impact on test execution.
+
+- Instantly visualize, triage, and fix accessibility violations without any additional code or configuration.
+- Dive deep into each violation with live, fully-rendered DOM snapshots of your application as it appeared during your tests.
+- Filter out the noise to explore only newly-introduced issues related to specific commits.
+- Track your team's progress over time with historical scores to monitor improvements and identify regressions.
+
+<Btn
+  label="Request trial ➜"
+  variant="indigo-dark"
+  className="!mb-2 mr-1"
+  href="https://www.cypress.io/accessibility?utm_medium=intro-cta&utm_source=docs.cypress.io&utm_content=Request%20trial"
+/>
+<Btn
+  label="See a demo"
+  icon="action-play-small"
+  className="!mb-2 mr-1"
+  href="https://www.loom.com/share/eedb1d18c22942d39a5ed2471ae72788?sid=e39f791e-c0b3-4efc-9770-cbfac403c3b9"
+/>
+<Btn
+  label=" Explore an example project"
+  icon="cypress-accessibility-outline"
+  className="!mb-2 mr-1"
+  href="https://on.cypress.io/rwa-accessibility-views?utm_source=docs.cypress.io&utm_medium=intro-cta&utm_content=Explore%20an%20example%20project"
+/>
+
+<DocsImage
+  src="/img/accessibility/get-started/cypress-accessibility-overview.png"
+  alt="A graphic showing the Cypress Accessibility dashboard including list of rules, views, and the user interface showing how devtools can be used"
+  noBorder={true}
+/>
+
+Looking for a general guide for accessibility testing concepts in Cypress App? Go to the [accessibility testing guide](/app/guides/accessibility-testing).
+
+## Get Started
+
+You don't need to make any changes to your code or your test setup. If you record test runs to the Cypress Cloud with Test Replay, you're ready to start using Cypress Accessibility.
+You'll start your [free trial](https://www.cypress.io/accessibility?utm_medium=intro-cta&utm_source=docs.cypress.io&utm_content=Request%20trial) with personalized support
+from our sales team and your existing test data to instantly see full accessibility reports for all your Cypress projects.
+From there, you can integrate with CI to set your own standards for handling the results.
+
+[Get started with Cypress Accessibility ➜](/accessibility/get-started/setup)
+
+## Top Guides
+
+<ul class="guidesList">
+  <li class="card">
+    <a
+      href="/accessibility/guides/improve-accessibility"
+      aria-labelledby="card-title-1"
+    >
+      <Icon name="chart-line" />
+      <h3 id="card-title-1">Improve Accessibility</h3>
+      <p>
+        Discover how to break down accessibility reports, prioritize fixes, and
+        make impactful progress toward accessible software with Cypress
+        Accessibility.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/detect-changes"
+      aria-labelledby="card-title-8"
+    >
+      <Icon name="chart-line" />
+      <h3 id="card-title-8">Detect and manage changes</h3>
+      <p>
+        Compare reports in detail to review only _new_ accessibility issues, use
+        our API to react to runs that don't meet your standards, and spot trends
+        with analytics.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/maintain-accessibility"
+      aria-labelledby="card-title-2"
+    >
+      <Icon name="magnifying-glass-chart" />
+      <h3 id="card-title-2">Maintain Accessibility</h3>
+      <p>
+        Learn how to maintain long-term accessibility with Cypress, using
+        continuous feedback and monitoring to prevent regressions and keep your
+        application accessible.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/block-pull-requests"
+      aria-labelledby="card-title-3"
+    >
+      <Icon name="bug-slash" />
+      <h3 id="card-title-3">Block pull requests and set policies</h3>
+      <p>
+        Set policies and block pull requests automatically with Cypress
+        Accessibility's Results API, enabling custom CI workflows to enforce
+        accessibility standards and prevent regressions.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/local-development"
+      aria-labelledby="card-title-4"
+    >
+      <Icon name="laptop-code" />
+      <h3 id="card-title-4">Feedback during local development</h3>
+      <p>
+        Get precise, fast, and scoped accessibility feedback during local
+        development by recording Cypress tests directly to Cypress
+        Cloud—bypassing CI pipelines and ensuring accurate insights with minimal
+        effort.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/production-monitoring"
+      aria-labelledby="card-title-5"
+    >
+      <Icon name="user-shield" />
+      <h3 id="card-title-5">Production monitoring</h3>
+      <p>
+        Monitor accessibility issues in production by running scheduled Cypress
+        tests against live environments, capturing dynamic content changes, and
+        generating automated reports for a comprehensive accessibility overview.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/maximize-coverage"
+      aria-labelledby="card-title-6"
+    >
+      <Icon name="circle-half-stroke" />
+      <h3 id="card-title-6">Maximize coverage</h3>
+      <p>
+        Expand accessibility testing by combining Cypress Accessibility's
+        automated checks with custom assertions tailored to your application,
+        identifying hotspots for deeper manual review, and ensuring long-term
+        quality with a hybrid testing approach.
+      </p>
+    </a>
+  </li>
+  <li class="card">
+    <a
+      href="/accessibility/guides/accessibility-automation"
+      aria-labelledby="card-title-7"
+    >
+      <Icon name="book-open-reader" />
+      <h3 id="card-title-7">Accessibility automation principles</h3>
+      <p>
+        Apply these core principles to maximize the impact of Cypress
+        Accessibility's automation: complement automation with human judgment
+        for deeper insights, manage false positives effectively, and ensure
+        robust assistive technology support.
+      </p>
+    </a>
+  </li>
+</ul>
+
+## What to expect
+
+Cypress Accessibility delivers detailed, actionable accessibility reports directly from your tests, powered by the industry-leading Axe Core® library by Deque Systems. These reports require no extra setup and are automatically generated for every unique state reached during your Cypress tests, whether in end-to-end or component testing.
+
+- **No setup**: Cypress Accessibility utilizes the same capture protocol as [Test Replay](/cloud/features/test-replay) (requires Cypress v13+), so no additional code or configuration is needed.
+- **No test slowdown or flakiness**: Server-side execution ensures no impact on test performance or existing code.
+- **Comprehensive reporting**: During test execution, unique states—defined by distinct DOM structures—are recorded for end-to-end views and components.
+- **DOM snapshots**: Each detected violation is accompanied by a [full-page, inspectable DOM snapshot](/accessibility/core-concepts/inspecting-violation-details), highlighting the exact location and context of the violation.
+- **Report generation**: [Detailed reports](/accessibility/core-concepts/run-level-reports) are generated, offering sortable and filterable views by page, component, or the entire test run. Rule-based summaries for an aggregated view of accessibility outcomes for the entire run are also available.
+- **Run comparison**: Compare the results from two runs and see only the new issues. Know before you merge if a code change is going to cause new accessibility problems.
+- **Selective element handling**: Elements marked as "ignored" in tests are excluded from scoring but remain visible for manual review, ensuring flexibility via [configuration](/accessibility/configuration/overview).
+- **Flexible pipeline integration**: The [Results API](/accessibility/results-api) allows you to programmatically control your CI pipeline's behavior based on accessibility outcomes, enabling enforcement of accessibility policies.
+
+Learn more about [how it works](/accessibility/core-concepts/how-it-works).
+
+_Note: DEQUE, DEQUELABS, AXE®, and AXE-CORE® are trademarks of Deque Systems, Inc. in the US and other countries. These terms are used throughout our documentation to refer to the accessibility testing library used by Cypress Accessibility._

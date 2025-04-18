@@ -1,0 +1,83 @@
+---
+title: 'clearAllCookies | Cypress Documentation'
+description: Clear all browser cookies in Cypress.
+sidebar_label: clearAllCookies
+---
+
+<ProductHeading product="app" />
+
+# clearAllCookies
+
+Clear all browser cookies.
+
+:::caution
+
+Cypress automatically clears all cookies _before_ each test to prevent state
+from being shared across tests when
+[test isolation](/app/core-concepts/writing-and-organizing-tests#Test-Isolation)
+is enabled. You shouldn't need to use this command unless you're using it to
+clear all cookies inside a single test or test isolation is disabled.
+
+:::
+
+## Syntax
+
+```javascript
+cy.clearAllCookies()
+cy.clearAllCookies(options)
+```
+
+### Usage
+
+<Icon name="check-circle" color="green" /> **Correct Usage**
+
+```javascript
+cy.clearAllCookies() // Clear all cookies
+```
+
+### Arguments
+
+<Icon name="angle-right" /> **options _(Object)_**
+
+Pass in an options object to change the default behavior of
+`cy.clearAllCookies()`.
+
+| Option    | Default                                                     | Description                                                                         |
+| --------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `log`     | `true`                                                      | Displays the command in the [Command log](/app/core-concepts/open-mode#Command-Log) |
+| `timeout` | [`responseTimeout`](/app/references/configuration#Timeouts) | Time to wait for `cy.clearAllCookies()` to resolve before [timing out](#Timeouts)   |
+
+<HeaderYields />
+
+- `cy.clearAllCookies()` yields `null`.
+
+## Rules
+
+<HeaderRequirements />
+
+- `cy.clearAllCookies()` requires being chained off of `cy`.
+
+<HeaderAssertions />
+
+- `cy.clearAllCookies()` cannot have any assertions chained.
+
+<HeaderTimeouts />
+
+- `cy.clearAllCookies()` should never time out.
+
+:::caution
+
+Because `cy.clearAllCookies()` is asynchronous it is technically possible for
+there to be a timeout while talking to the internal Cypress automation APIs. But
+for practical purposes it should never happen.
+
+:::
+
+## See also
+
+- [`cy.clearCookie()`](/api/commands/clearcookie)
+- [`cy.getAllCookies()`](/api/commands/getallcookies)
+- [`cy.getCookie()`](/api/commands/getcookie)
+- [`cy.getCookies()`](/api/commands/getcookies)
+- [`cy.setCookie()`](/api/commands/setcookie)
+- [`Cypress.Cookies.debug()`](/api/cypress-api/cookies)

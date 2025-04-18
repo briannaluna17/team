@@ -1,0 +1,62 @@
+---
+title: 'Testing interactive elements | Cypress UI Coverage'
+description: 'UI Coverage uses a set of rules, based on HTML semantics, WHATWG standards, as well as some additional rules defined by Cypress, to determine which elements are interactive.'
+sidebar_label: Interactivity
+sidebar_position: 10
+---
+
+<ProductHeading product="ui-coverage" />
+
+# Interactivity
+
+## Interactive Elements
+
+UI Coverage determines interactivity based on a combination of HTML semantics, [WHATWG standards](https://html.spec.whatwg.org/dev/dom.html#interactive-content), and Cypress-specific rules. Interactive elements included in UI Coverage are:
+
+- **Implicit interactive roles**: Elements with a tag of `a`, `button`, `input`, `select`, `textarea`, etc.
+- **Explicit interactive roles**: Elements with a `role` attribute set to values like `button`, `checkbox`, `radio`, `tab`, `textbox`, etc.
+- **Tab-navigable elements**: Elements with a `tabindex` attribute set to `>= 0`.
+
+These elements are tracked for interaction to provide actionable insights into test coverage.
+
+## Interaction Commands
+
+Interactive elements are marked as "tested" when they are interacted with using specific Cypress commands. These include:
+
+- `blur`
+- `check`
+- `clear`
+- `click`
+- `dblclick`
+- `focus`
+- `rightclick`
+- `scrollIntoView`
+- `scrollTo`
+- `select`
+- `selectFile`
+- `submit`
+- `trigger`
+- `type`
+- `uncheck`
+
+By ensuring these commands interact with the appropriate elements, UI Coverage accurately reflects your test coverage.
+
+## Untested Links
+
+UI Coverage tracks `<a>` elements (links) that are not visited during testing. For each untested link, detailed information is available:
+
+### Referrers
+
+The **Referrers** section identifies views that contain links to the untested destination, helping you:
+
+- Pinpoint untested areas referenced from these links.
+- Understand navigation paths leading to untested sections.
+- Gain context on where these links appear within your application.
+
+### URLs
+
+The **URLs** section groups similar patterns for dynamic routing. For instance, links to `/users/1`, `/users/2`, and `/users/3` are grouped as /users/\*. This grouping aids in:
+
+- Understanding the scope of dynamic routes in your application
+- Viewing the count and variations of a URL pattern.
+- Writing configuration rules to handle these patterns effectively.

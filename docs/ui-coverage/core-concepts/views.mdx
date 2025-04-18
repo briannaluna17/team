@@ -1,0 +1,75 @@
+---
+title: 'Views of URLs and mounted components | Cypress UI Coverage'
+description: 'UI Coverage is organized into views, which are the unique URLs across all snapshots from end-to-end tests and the unique mounted components from component tests.'
+sidebar_label: Views
+sidebar_position: 100
+---
+
+<ProductHeading product="ui-coverage" />
+
+# Views
+
+UI Coverage organizes unique URLs from snapshots in end-to-end tests and mounted components in component tests into Views. Each View represents a distinct page or state in your application, allowing you to track coverage across different parts of your application.
+
+## How views are created
+
+By default, UI Coverage applies a set of rules to generate a single View for dynamic URLs representing the same page. These rules ensure clarity by grouping similar URLs and reducing noise:
+
+- **Search Parameters**: All query parameters are removed (e.g., `/dashboard?tab=overview` becomes `/dashboard`).
+- **Hash Parameters**: Fragment identifiers are removed unless they represent a subpath (e.g., `#/admin`).
+- **Dynamic Segments**: URL segments that differ only by integers or UUIDs are replaced with a wildcard (`*`).
+
+### Examples of views
+
+- `/users/123/profile` and `/users/456/profile` become `/users/*/profile`
+- `/dashboard?tab=overview` and `/dashboard?tab=settings` become `/dashboard`
+- `/app#settings` and `/app#profile` become `/app`
+- `/app#/admin` and `/app#/settings` remain separate Views
+
+These rules help consolidate similar pages into manageable Views while maintaining specificity where needed.
+
+## Using Views
+
+In the UI Coverage interface, Views are listed along with their coverage scores, providing insights into:
+
+- **Tested Areas**: Identify which parts of your application have sufficient test coverage.
+- **Untested Areas**: Spot pages or components that lack testing and prioritize them.
+- **Coverage Trends**: Track how coverage evolves across Views over time.
+- **Critical Flows**: Focus testing efforts on key user journeys and ensure their completeness.
+
+## Customizing views
+
+You can tailor how URLs are grouped into Views using configuration options:
+
+### View grouping
+
+Define rules for grouping URLs into Views to align with your application's structure:
+
+```json
+{
+  "views": [
+    {
+      "pattern": "https://cypress.io/users/*"
+    }
+  ]
+}
+```
+
+To learn more about the configuration options, refer to the [Views](/ui-coverage/configuration/views) documentation.
+
+### Ignoring views
+
+Exclude irrelevant or low-priority URLs from being tracked as Views:
+
+```json
+{
+  "viewFilters": [
+    {
+      "pattern": "https://auth.example.com/*",
+      "include": false
+    }
+  ]
+}
+```
+
+To learn more about the configuration options, refer to the [View Filters](/ui-coverage/configuration/viewfilters) documentation.

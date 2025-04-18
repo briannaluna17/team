@@ -1,0 +1,53 @@
+.badge {
+  display: inline-block;
+  color: #fff;
+  padding: 0.35em 0.65em;
+  font-size: 0.8rem;
+  line-height: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+p > .badge {
+  display: inline;
+}
+
+h1 > .badge {
+  vertical-align: middle;
+}
+
+.success {
+  background-color: var(--ifm-color-jade-100);
+  color: var(--ifm-color-jade-600);
+}
+
+.danger {
+  background-color: var(--ifm-color-red-100);
+  color: var(--ifm-color-red-600);
+}
+
+.caution {
+  background-color: #e6a700;
+}
+
+.info {
+  background-color: var(--ifm-color-teal-100);
+  color: var(--ifm-color-teal-600);
+}
+
+a:hover > .success,
+a:focus > .success {
+  background-color: var(--ifm-color-jade-200);
+  color: var(--ifm-color-jade-800);
+}
+
+/* large light-green badge in page/content titles */
+.hint {
+  background-color: #cff1e6;
+  color: var(--ifm-color-jade-600);
+  padding: 0.125rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}

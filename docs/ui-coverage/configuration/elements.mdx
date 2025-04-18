@@ -1,0 +1,120 @@
+---
+title: 'Elements | Cypress UI Coverage'
+description: 'The `elements` configuration allows you to uniquely identify elements in UI Coverage using custom logic.'
+sidebar_label: elements
+---
+
+<ProductHeading product="ui-coverage" />
+
+# elements
+
+UI Coverage provides automatic logic to [identify](/ui-coverage/core-concepts/element-identification) elements based on their DOM structure. However, in complex applications, elements may lack stable identifiers or have dynamic attributes that vary across snapshots, leading to incorrect identification. The `elements` configuration allows you to specify selectors to uniquely identify elements, ensuring consistency across snapshots and simplifying your coverage reports.
+
+The `elements` configuration is used as the element's identity if **only one element** per snapshot matches. If there are multiple matches in the same snapshot, this configuration is ignored and the default [identify](/ui-coverage/core-concepts/element-identification) strategy is used.
+
+## Why use elements configuration?
+
+- **Handle Dynamic Attributes**: Ensure elements are consistently identified across snapshots, even when attributes change.
+- **Ensure Unique Identification**: Use custom selectors to uniquely identify elements across snapshots that lack unique attributes or have dynamic values, avoiding misclassification.
+- **Simplify Debugging**: Assign human-readable names to elements to make reports more interpretable and debugging easier.
+
+## Syntax
+
+```json
+{
+  "uiCoverage": {
+    "elements": [
+      {
+        "selector": string,
+        "name": string
+      }
+    ]
+  }
+}
+```
+
+### Options
+
+For every element considered by UI Coverage, the first applicable rule, determined by a match with the `selector` property, is used for identification. Elements that do not match any rules are identified by the default UI Coverage [element identification rules](/ui-coverage/core-concepts/element-identification).
+
+If multiple elements within the same snapshot satisfy the same rule, the rule cannot uniquely identify these elements. In such cases, the rule is bypassed, and either subsequent rules or the default element identification logic are applied.
+
+| Option     | Required | Default    | Description                                                                                                                      |
+| ---------- | -------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `selector` | Required |            | A CSS selector to identify elements. Supports standard CSS selector syntax, including IDs, classes, attributes, and combinators. |
+| `name`     | Optional | `selector` | A human-readable name for the element, displayed in UI Coverage reports.                                                         |
+
+## Examples
+
+### Identify elements by dynamic selector across snapshots
+
+#### Config
+
+```json
+{
+  "uiCoverage": {
+    "elements": [
+      {
+        "selector": "#my-form [id^='dropdown']"
+      }
+    ]
+  }
+}
+```
+
+#### HTML
+
+```xml
+<!-- Snapshot 1 -->
+<body>
+  <form id="my-form">
+    <input id="dropdown-142"></input>
+  </form>
+</body>
+
+<!-- Snapshot 2 -->
+<body>
+  <form id="my-form">
+    <input id="dropdown-980"></input>
+  </form>
+</body>
+```
+
+#### Elements shown in UI Coverage
+
+```
+#my-form [id^="dropdown"]
+```
+
+---
+
+### Identify elements with human-readable names
+
+#### Config
+
+```json
+{
+  "uiCoverage": {
+    "elements": [
+      {
+        "selector": "#ui-popover-button",
+        "name": "Help Popover"
+      }
+    ]
+  }
+}
+```
+
+#### HTML
+
+```xml
+<body>
+  <button id="ui-popover-button">Help</button>
+</body>
+```
+
+#### Elements shown in UI Coverage
+
+```
+Help Popover
+```

@@ -1,0 +1,75 @@
+---
+title: 'clearAllSessionStorage | Cypress Documentation'
+description: Clear all session storage data in Cypress.
+sidebar_label: clearAllSessionStorage
+---
+
+<ProductHeading product="app" />
+
+# clearAllSessionStorage
+
+Clear
+[`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
+data for all origins with which the test has interacted.
+
+:::caution
+
+Cypress automatically clears all session storage _before_ each test to prevent
+state from being shared across tests when
+[test isolation](/app/core-concepts/writing-and-organizing-tests#Test-Isolation)
+is enabled. You shouldn't need to use this command unless you're using it to
+clear sessionStorage inside a single test or test isolation is disabled.
+
+:::
+
+## Syntax
+
+```javascript
+cy.clearAllSessionStorage()
+cy.clearAllSessionStorage(options)
+```
+
+### Usage
+
+<Icon name="check-circle" color="green" /> **Correct Usage**
+
+```javascript
+cy.clearAllSessionStorage()
+```
+
+### Arguments
+
+<Icon name="angle-right" /> **options _(Object)_**
+
+Pass in an options object to change the default behavior of
+`cy.clearAllSessionStorage()`.
+
+| Option | Default | Description                                                                         |
+| ------ | ------- | ----------------------------------------------------------------------------------- |
+| `log`  | `true`  | Displays the command in the [Command log](/app/core-concepts/open-mode#Command-Log) |
+
+<HeaderYields />
+
+- `cy.clearAllSessionStorage()` yields `null`.
+
+## Rules
+
+<HeaderRequirements />
+
+- `cy.clearAllSessionStorage()` requires being chained off of `cy`.
+
+<HeaderAssertions />
+
+`cy.clearAllSessionStorage()` cannot have any assertions chained.
+
+<HeaderTimeouts />
+
+- `cy.clearAllSessionStorage()` cannot time out.
+
+## See also
+
+- [`cy.clearAllLocalStorage()`](/api/commands/clearalllocalstorage)
+- [`cy.clearCookies()`](/api/commands/clearcookies)
+- [`cy.clearLocalStorage()`](/api/commands/clearlocalstorage)
+- [`cy.getAllLocalStorage()`](/api/commands/getalllocalstorage)
+- [`cy.getAllSessionStorage()`](/api/commands/getallsessionstorage)

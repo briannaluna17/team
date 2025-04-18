@@ -1,0 +1,121 @@
+---
+title: 'spread | Cypress Documentation'
+description: Expand an array into multiple arguments in Cypress.
+sidebar_label: spread
+---
+
+<ProductHeading product="app" />
+
+# spread
+
+Expand an array into multiple arguments.
+
+:::info
+
+Identical to [`.then()`](/api/commands/then), but always expects an array-like
+structure as its subject.
+
+:::
+
+## Syntax
+
+```javascript
+.spread(callbackFn)
+.spread(options, callbackFn)
+```
+
+### Usage
+
+<Icon name="check-circle" color="green" /> **Correct Usage**
+
+```javascript
+cy.getCookies().spread(() => {}) // Yield all cookies
+```
+
+<Icon name="exclamation-triangle" color="red" /> **Incorrect Usage**
+
+```javascript
+cy.spread(() => {}) // Errors, cannot be chained off 'cy'
+cy.clock().spread() // Errors, 'clock' does not yield an array
+```
+
+### Arguments
+
+<Icon name="angle-right" /> **fn _(Function)_**
+
+Pass a function that expands the array into its arguments.
+
+<Icon name="angle-right" /> **options _(Object)_**
+
+Pass in an options object to change the default behavior of `.spread()`.
+
+| Option    | Default                                                           | Description                                                            |
+| --------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `timeout` | [`defaultCommandTimeout`](/app/references/configuration#Timeouts) | Time to wait for `.spread()` to resolve before [timing out](#Timeouts) |
+
+<HeaderYields />
+
+- `.spread()` yields the return value of your callback function.
+- `.spread()` wlll not change the subject if `null` or `undefined` is returned.
+- If the returned values are DOM elements, it is
+  [unsafe](/app/core-concepts/retry-ability#Only-queries-are-retried) to
+  chain further commands that rely on the subject after `.spread()`.
+
+## Examples
+
+### Aliased Routes
+
+#### Expand the array of aliased routes
+
+```javascript
+cy.intercept('/users/*').as('getUsers')
+cy.intercept('/activities/*').as('getActivities')
+cy.intercept('/comments/*').as('getComments')
+cy.wait(['@getUsers', '@getActivities', '@getComments']).spread(
+  (getUsers, getActivities, getComments) => {
+    // each interception is now an individual argument
+  }
+)
+```
+
+### Cookies
+
+#### Expand the array of cookies
+
+```javascript
+cy.getCookies().spread((cookie1, cookie2, cookie3) => {
+  // each cookie is now an individual argument
+})
+```
+
+## Rules
+
+<HeaderRequirements />
+
+- `.spread()` requires being chained off a previous command.
+- `.spread()` requires being chained off a command that yields an array-like
+  structure.
+
+<HeaderAssertions />
+
+- `.spread()` will only run assertions you have chained once, and will not
+  [retry](/app/core-concepts/retry-ability).
+
+<HeaderTimeouts />
+
+- `.spread()` can time out waiting for a promise you've returned to resolve.
+
+## Command Log
+
+- `.spread()` does _not_ log in the Command Log
+
+## History
+
+| Version                                  | Changes                   |
+| ---------------------------------------- | ------------------------- |
+| [0.5.9](/app/references/changelog#0-5-9) | `.spread()` command added |
+
+## See also
+
+- [`.each()`](/api/commands/each)
+- [`.then()`](/api/commands/then)

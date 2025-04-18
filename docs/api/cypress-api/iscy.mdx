@@ -1,0 +1,42 @@
+---
+title: 'Cypress.isCy | Cypress Documentation'
+description: Cypress.isCy checks if a variable is a valid instance of cy or a cy chainable in Cypress.
+sidebar_label: isCy
+sidebar_position: 140
+---
+
+<ProductHeading product="app" />
+
+# Cypress.isCy
+
+`Cypress.isCy()` checks if a variable is a valid instance of `cy` or a `cy`
+chainable.
+
+This utility may be useful when writing a plugin using [Node Events](/api/node-events/overview)
+for Cypress and you want to determine if a value is a valid Cypress chainable.
+
+## Syntax
+
+```javascript
+Cypress.isCy(obj)
+```
+
+### Arguments
+
+<Icon name="angle-right" /> **obj _(Object)_**
+
+The object to test.
+
+## Examples
+
+```javascript
+Cypress.isCy(cy) // true
+
+const chainer = cy.wrap().then(() => {
+  Cypress.isCy(chainer) // true
+})
+
+Cypress.isCy(undefined) // false
+
+Cypress.isCy(() => {}) // false
+```

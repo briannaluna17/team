@@ -1,0 +1,8 @@
+.theme-doc-sidebar-container {
+  // Not happy about this, but I can't figure out how to target this otherwise
+  a.text-indigo-500 {
+    [data-theme='dark'] & {
+      color: var(--ifm-color-indigo-300)
+    }
+  }
+}

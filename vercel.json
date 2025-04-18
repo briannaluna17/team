@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/examples/app/references/recipes",
+      "destination": "/app/references/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/examples/app/continuous-integration/docker",
+      "destination": "/app/continuous-integration/overview#Cypress-Docker-Images",
+      "permanent": true
+    },
+    {
+      "source": "/guides/references/bundled-tools.html",
+      "destination": "/app/references/bundled-libraries",
+      "permanent": true
+    }
+  ]
+}

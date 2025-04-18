@@ -1,0 +1,52 @@
+---
+title: 'Group related elements | Cypress UI Coverage'
+description: 'UI Coverage groups elements that are related to one another through structural or behavioral hints, but this is configurable.'
+sidebar_label: Element Grouping
+sidebar_position: 20
+---
+
+<ProductHeading product="ui-coverage" />
+
+# Element Grouping
+
+Testing every element on a page is not always necessary when multiple elements share the same behavior. UI Coverage simplifies this by grouping related elements, allowing interactions with any element in the group to count as testing the entire group. This reduces redundancy and ensures efficient and accurate coverage. For example, options in a dropdown menu can be grouped if interacting with one option verifies the behavior of the entire set.
+
+## How element grouping works
+
+UI Coverage groups elements using structural and behavioral hints, along with user-defined configurations. When grouped, interacting with one element is considered equivalent to testing all elements in the group.
+
+## Grouping Rules
+
+- **User-Defined Groups**: Elements are grouped by [Element Groups](/ui-coverage/configuration/elementgroups) configuration if specified.
+- **Labels and Form Elements**: `label` elements are automatically grouped with the form elements they are associated with.
+- **Table Row Grouping**: Elements within table rows are grouped with elements sharing common attributes or the same position across rows.
+- **Repeated Elements**: Duplicate elements in the DOM with shared attributes are grouped.
+- **Parent-Shared Attributes**: Duplicate elements with parents that share common attributes are grouped.
+- **Dynamic Links**: Links with similar `href` patterns are resolved into [views](/ui-coverage/configuration/views) and grouped by their `href` pattern.
+
+### Example
+
+Consider a table where each row contains a delete button:
+
+```html
+<table>
+  <tr>
+    <td>John Doe</td>
+    <td>
+      <button>Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Jane Smith</td>
+    <td>
+      <button>Delete</button>
+    </td>
+  </tr>
+</table>
+```
+
+In this case, UI Coverage groups the delete buttons together in accordance with our grouping rules. Interacting with one delete button is equivalent to testing all delete buttons in the table.
+
+## Customizing element grouping
+
+You can customize element grouping to suit your application's structure and behavior. Refer to the [Element Groups](/ui-coverage/configuration/elementgroups) configuration guide to learn how to define custom groups and group elements based on specific attributes or selectors.
